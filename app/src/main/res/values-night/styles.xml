@@ -3,7 +3,7 @@
     <style name="Fab">
         <item name="backgroundTint">@color/white</item>
         <item name="elevation">0dp</item>
-        <item name="fabCustomSize">70dp</item>
+        <item name="fabCustomSize">100dp</item>
         <item name="maxImageSize">30dp</item>
         <item name="tint">@color/black</item>
     </style>
