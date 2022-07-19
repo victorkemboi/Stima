@@ -1,5 +1,6 @@
 package com.mes.stima.ui;
 
+import androidx.annotation.NonNull;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
@@ -13,7 +14,7 @@ public class TimerViewModel extends ViewModel {
 
     public LiveData<String> getTimer() {
         if (timer == null) {
-            timer = new MutableLiveData<>();
+            timer = new MutableLiveData<>("00:00");
         }
         return timer;
     }
@@ -38,7 +39,7 @@ public class TimerViewModel extends ViewModel {
     private void postTimerValue() {
         int seconds = timerValue % 60;
         int minutes = (timerValue % 3600) / 60;
-        String time = seconds + " : " + minutes;
+        String time = formatNumber(minutes) + " : " + formatNumber(seconds);
         timer.postValue(time);
     }
 
@@ -50,5 +51,16 @@ public class TimerViewModel extends ViewModel {
 
     void pauseTimer() {
         isTimerActive = false;
+    }
+
+    @NonNull
+    private String formatNumber(int value) {
+        String formattedValue;
+        if (value < 10) {
+            formattedValue = "0" + value;
+        } else {
+            formattedValue = String.valueOf(value);
+        }
+        return formattedValue;
     }
 }
