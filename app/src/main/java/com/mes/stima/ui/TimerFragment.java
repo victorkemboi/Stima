@@ -63,6 +63,7 @@ public class TimerFragment extends Fragment {
         binding.fabStopTimer.setVisibility(View.VISIBLE);
         binding.fabStopTimer.setOnClickListener(view -> {
             viewModel.stopTimer();
+            setStartTimerButtonOnClickListener();
             binding.fabStopTimer.setVisibility(View.GONE);
         });
     }
