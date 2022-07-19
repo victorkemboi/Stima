@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="Fab">
+        <item name="backgroundTint">@color/white</item>
+        <item name="elevation">0dp</item>
+        <item name="fabCustomSize">70dp</item>
+        <item name="maxImageSize">30dp</item>
+        <item name="tint">@color/black</item>
+    </style>
+</resources>
