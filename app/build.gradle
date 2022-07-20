@@ -31,13 +31,13 @@ android {
 }
 
 dependencies {
-    implementation libs.appcompat
-    implementation libs.material
-    implementation libs.constraintlayout
-    implementation libs.navigation.fragment
-    implementation libs.navigation.ui
-    implementation libs.timber
-    testImplementation libs.junit4
-    androidTestImplementation libs.android.test.junit4
-    androidTestImplementation libs.android.test.espresso.core
+    implementation(libs.appcompat)
+    implementation(libs.material)
+    implementation(libs.constraintlayout)
+    implementation(libs.navigation.fragment)
+    implementation(libs.navigation.ui)
+    implementation(libs.timber)
+    testImplementation(libs.junit4)
+    androidTestImplementation(libs.android.test.junit4)
+    androidTestImplementation(libs.android.test.espresso.core)
 }
