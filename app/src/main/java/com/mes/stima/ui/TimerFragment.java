@@ -68,9 +68,7 @@ public class TimerFragment extends Fragment {
     private void observeTimerState() {
         viewModel.getTimer().observe(
                 getViewLifecycleOwner(),
-                string -> {
-                    binding.textViewCounter.setText(string);
-                }
+                string -> binding.textViewCounter.setText(string)
         );
     }
 

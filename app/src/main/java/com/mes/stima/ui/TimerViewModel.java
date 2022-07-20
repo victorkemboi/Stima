@@ -17,7 +17,7 @@ public class TimerViewModel extends ViewModel {
 
     public LiveData<String> getTimer() {
         if (timer == null) {
-            timer = new MutableLiveData<>("00:00");
+            timer = new MutableLiveData<>("00 : 00");
         }
         return timer;
     }
