@@ -8,13 +8,10 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.ViewModel;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.mes.stima.R;
 import com.mes.stima.databinding.FragmentTimerFragmentBinding;
-
-import timber.log.Timber;
 
 public class TimerFragment extends Fragment {
 

@@ -7,10 +7,13 @@ import androidx.lifecycle.ViewModel;
 
 import timber.log.Timber;
 
+
 public class TimerViewModel extends ViewModel {
     private int timerValue = 0;
     private MutableLiveData<String> timer;
     private Boolean isTimerActive = false;
+    private final Thread timerThread = new Thread(new Timer());
+    private Boolean timerThreadStarted = false;
 
     public LiveData<String> getTimer() {
         if (timer == null) {
@@ -20,20 +23,11 @@ public class TimerViewModel extends ViewModel {
     }
 
     void startTimer() {
-        new Thread(() -> {
-            isTimerActive = true;
-            while (isTimerActive) {
-                try {
-                    Thread.sleep(1000);
-                } catch (InterruptedException e) {
-                    Timber.e("InterruptedException Exception %s", e.getMessage());
-                }
-                if (isTimerActive) {
-                    timerValue += 1;
-                    postTimerValue();
-                }
-            }
-        }).start();
+        isTimerActive = true;
+        if (!timerThreadStarted) {
+            timerThread.start();
+            timerThreadStarted = true;
+        }
     }
 
     private void postTimerValue() {
@@ -62,5 +56,22 @@ public class TimerViewModel extends ViewModel {
             formattedValue = String.valueOf(value);
         }
         return formattedValue;
+    }
+
+    public class Timer implements Runnable {
+        @Override
+        public void run() {
+            while (isTimerActive) {
+                try {
+                    Thread.sleep(1000);
+                } catch (InterruptedException e) {
+                    Timber.e("InterruptedException Exception %s", e.getMessage());
+                }
+                if (isTimerActive) {
+                    timerValue += 1;
+                    postTimerValue();
+                }
+            }
+        }
     }
 }
