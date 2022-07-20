@@ -1,0 +1,36 @@
+name: main
+
+on:
+  push:
+    branches: [ main ]
+
+concurrency:
+  group: environment-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    name: Sanity checks
+    timeout-minutes: 60
+
+    steps:
+      - name: Checkout the repository
+        uses: actions/checkout@v3
+
+      - run: |
+          echo "${{ secrets.LOCAL_PROPERTIES }}" > local.properties
+      - name: set up JDK
+        uses: actions/setup-java@v3
+        with:
+          distribution: 'zulu'
+          java-version: '11'
+
+      - name: Setup Gradle
+        uses: gradle/gradle-build-action@v2
+
+      - name: Linting check
+        run: ./gradlew check
+
+      - name: Execute Gradle build
+        run: ./gradlew build
