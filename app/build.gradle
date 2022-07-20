@@ -1,6 +1,7 @@
 plugins {
     alias libs.plugins.android.application
 }
+apply from: "../jacoco.gradle"
 
 android {
     compileSdk 32

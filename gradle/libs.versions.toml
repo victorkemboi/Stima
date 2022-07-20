@@ -4,6 +4,8 @@ android-test-junit4 = "1.1.3"
 appcompat = "1.4.2"
 constraintlayout = "2.1.4"
 gradleplugin = "7.2.1"
+jacoco = "0.8.8"
+jacoco-android = "0.1.5"
 junit4 = "4.13.2"
 material = "1.6.1"
 navigation = "2.5.0"
@@ -14,6 +16,7 @@ android-test-espresso-core = { module = "androidx.test.espresso:espresso-core", 
 android-test-junit4 = { module = "androidx.test.ext:junit", version = "1.1.3" }
 appcompat = { module = "androidx.appcompat:appcompat", version.ref = "appcompat" }
 constraintlayout = { module = "androidx.constraintlayout:constraintlayout", version.ref = "constraintlayout" }
+jacocoPlugin = { module = "org.jacoco:org.jacoco.core", version.ref = "jacoco" }
 junit4 = { module = "junit:junit", version.ref = "junit4" }
 material = { module = "com.google.android.material:material", version.ref = "material" }
 navigation-fragment = { module = "androidx.navigation:navigation-fragment", version.ref = "navigation" }
@@ -27,3 +30,4 @@ timber = { module = "com.jakewharton.timber:timber", version.ref = "timber" }
 [plugins]
 android-application = { id = "com.android.application", version.ref = "gradleplugin" }
 android-library = { id = "com.android.library", version.ref = "gradleplugin" }
+jacoco-android = { id = "com.dicedmelon.gradle.jacoco-android", version.ref = "jacoco-android" }
